@@ -37,28 +37,34 @@ Includes **free trial**, **subscription model**, and **premium feature unlocks**
 
 ## 🏗️ Architecture
 
-### **Client App (Installed on each PC)**
-
-* Built in **C# (.NET)** for Windows integration
-* Shows session timer + alarm
-* Communicates with local server & cloud license server
-* Can capture screenshots (for screen monitoring)
-* Locks/ends session when time is up
-
-### **Local Café Server (Admin PC)**
-
-* Manages connected clients via LAN
-* Stores local session data (works offline if internet is down)
-* Syncs data with cloud when internet is available
-* Provides admin dashboard (WPF/WinForms or web UI)
-
-### **Cloud Server (Developer Controlled)**
-
-* SaaS backend for licensing & subscriptions
-* API for license verification and client sync
-* Cloud admin dashboard for remote management
-* Database: PostgreSQL/MySQL
-* Tech: Node.js / Django / ASP.NET Core
+```
+ ┌─────────────────────────────┐
+ │         Cloud Server         │
+ │ (License + Payments + Admin) │
+ │  • License verification      │
+ │  • Subscription management   │
+ │  • Remote monitoring         │
+ │  • Reports / Analytics       │
+ └───────────────▲─────────────┘
+                 │ Internet
+                 │
+ ┌───────────────┴─────────────┐
+ │     Local Café Server        │
+ │ (Admin PC in the café)       │
+ │  • Manages client sessions   │
+ │  • Works offline if needed   │
+ │  • Syncs data with cloud     │
+ │  • Local admin dashboard     │
+ └───────▲──────────┬──────────┘
+         │ LAN      │
+         │          │
+ ┌───────┴───────┐  ┌───────┴───────┐
+ │   Client PC   │  │   Client PC   │
+ │  • Login code │  │  • Timer      │
+ │  • Timer/lock │  │  • Alarm      │
+ │  • Screen cap │  │  • Lockout    │
+ └───────────────┘  └───────────────┘
+```
 
 ---
 
