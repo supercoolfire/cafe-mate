@@ -47,11 +47,17 @@ Phase 1 focuses on **local network (LAN)** features without cloud licensing or s
 
 ## 🛠️ Development Steps
 
-(see previous Phase1.md content for detailed steps)
+1. Set up solution in **Visual Studio** with two projects: `ServerApp` and `ClientApp`.
+2. Implement **LAN socket communication** (Server ↔ Client).
+3. Create **basic GUI** for Admin App (WinForms/WPF dashboard).
+4. Implement **Login, Timer, and Lock Screen** forms in Client App.
+5. Build **SQLite integration** for session tracking on Server.
+6. Test communication with multiple client PCs in the same LAN.
+7. Add **basic error handling + logging**.
 
 ---
 
-## 📂 File/Folder Structure (Proposed)
+## 📂 File/Folder Structure (C# Blueprint)
 
 ### Root Repository
 
