@@ -55,9 +55,9 @@ Includes **free trial**, **subscription model**, and **premium feature unlocks**
  │  • Works offline if needed   │
  │  • Syncs data with cloud     │
  │  • Local admin dashboard     │
- └───────▲──────────┬──────────┘
-         │ LAN      │
-         │          │
+ └───────▲──────────────────┬───┘
+         │ LAN              │
+         │                  │
  ┌───────┴───────┐  ┌───────┴───────┐
  │   Client PC   │  │   Client PC   │
  │  • Login code │  │  • Timer      │
