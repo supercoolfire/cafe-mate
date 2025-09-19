@@ -47,76 +47,81 @@ Phase 1 focuses on **local network (LAN)** features without cloud licensing or s
 
 ## 🛠️ Development Steps
 
-### Step 1: Project Setup
+(see previous Phase1.md content for detailed steps)
 
-* Create Git repo with folders:
+---
 
-  ```
-  /server-app   → Local Café Server (Admin)
-  /client-app   → Client PC App
-  /docs         → Documentation (README, Phase1.md, etc.)
-  ```
-* Initialize both projects as **C# .NET WinForms/WPF apps**.
+## 📂 File/Folder Structure (Proposed)
 
-### Step 2: Database (Server)
+### Root Repository
 
-* Use **SQLite** for local storage.
-* Tables:
+```
+/internet-cafe-system  
+│── /server-app        # Admin / Local Café Server  
+│── /client-app        # Client PC Application  
+│── /docs              # Documentation (README, Phase1.md, etc.)  
+│── InternetCafe.sln   # Visual Studio solution file  
+```
 
-  * `sessions` → id, code, client\_id, start\_time, duration, status
-  * `clients` → id, name, ip\_address, status
+---
 
-### Step 3: Server App (Admin)
+### **Server App (Admin PC)**
 
-* GUI for:
+```
+/server-app  
+│── Program.cs                # Entry point  
+│── App.config                # Configurations (DB path, ports, etc.)  
+│  
+├── /Forms  
+│   ├── MainForm.cs           # Main admin dashboard  
+│   ├── ClientListForm.cs     # List of connected clients  
+│   ├── SessionControlForm.cs # Start/extend/end sessions  
+│  
+├── /Database  
+│   ├── Database.cs           # SQLite connection handler  
+│   ├── SessionModel.cs       # Session entity  
+│   ├── ClientModel.cs        # Client entity  
+│   ├── Migrations/           # DB schema updates  
+│  
+├── /Networking  
+│   ├── ServerSocket.cs       # TCP/SignalR server  
+│   ├── MessageProtocol.cs    # Defines JSON message formats  
+│   ├── EncryptionHelper.cs   # Simple message encryption  
+│  
+└── /Utils  
+    ├── CodeGenerator.cs      # Creates unique session codes  
+    ├── TimerManager.cs       # Handles server-side timers  
+    ├── Logger.cs             # Logs events and errors  
+```
 
-  * Listing connected clients.
-  * Generating login codes.
-  * Assigning session duration.
-  * Extending/ending sessions.
-* Background process:
+---
 
-  * Tracks timers for each client.
-  * Sends updates to clients.
+### **Client App (Customer PC)**
 
-### Step 4: Client App
-
-* Login screen: enter session code.
-* Timer display: countdown with warnings.
-* Lock screen overlay when time runs out:
-
-  * Covers entire desktop.
-  * Prevents task switching (Ctrl+Alt+Del block optional).
-* Alarm sound + popup warning at expiration.
-
-### Step 5: LAN Communication
-
-* Implement **socket server** in Admin App.
-* Client App connects to Admin using IP + port.
-* Define simple JSON protocol:
-
-  ```json
-  {
-    "action": "start_session",
-    "duration": 120
-  }
-  ```
-
-### Step 6: Security
-
-* Basic encryption for client-server messages.
-* Prevents customers from spoofing messages.
-* Store codes securely (hashed in DB).
-
-### Step 7: Testing
-
-* Setup 1 admin PC + 2 client PCs on same LAN.
-* Test cases:
-
-  * Client connects/disconnects.
-  * Session start/extend/end.
-  * Alarm & lockout.
-  * Multiple clients at once.
+```
+/client-app  
+│── Program.cs                # Entry point  
+│── App.config                # Configurations (server IP, port, etc.)  
+│  
+├── /Forms  
+│   ├── LoginForm.cs          # Enter session code  
+│   ├── TimerForm.cs          # Shows countdown timer  
+│   ├── LockScreenForm.cs     # Fullscreen lock when time is up  
+│  
+├── /Networking  
+│   ├── ClientSocket.cs       # Connects to server  
+│   ├── MessageHandler.cs     # Processes server commands  
+│   ├── EncryptionHelper.cs   # Matches server’s encryption  
+│  
+├── /Session  
+│   ├── SessionManager.cs     # Handles login, start, extend, expire  
+│   ├── AlarmManager.cs       # Popup + sound warning before time ends  
+│   ├── LockManager.cs        # Activates lock screen overlay  
+│  
+└── /Utils  
+    ├── ConfigHelper.cs       # Reads/writes config (server IP, etc.)  
+    ├── Logger.cs             # Logs events locally  
+```
 
 ---
 
