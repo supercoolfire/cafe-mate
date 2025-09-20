@@ -340,12 +340,10 @@ After running the script, you will have the **canonical folder structure** with 
     - [x] `dotnet new winforms -n client-app` Create projects `internet-cafe-system\client-app\client-app.csproj`
     - [x] `dotnet sln InternetCafe.sln add server-app/server-app.csproj` Add projects to the solution
     - [x] `dotnet sln InternetCafe.sln add client-app/client-app.csproj` Add projects to the solution
-    - [x] `dotnet build InternetCafe.sln` build
+    - [x] `dotnet build InternetCafe.sln` build  
     or
     - [ ] run thi PowerShell script [init-phase1](init-phase1.ps1)
   
-#### Streamlined steps by gemini
-
 
 ### Step 2: Implement Session Basics
 
