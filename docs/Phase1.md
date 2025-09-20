@@ -329,13 +329,23 @@ After running the script, you will have the **canonical folder structure** with 
 
 ### Step 1: Establish Socket Communication
 
-- [ ] Implement ServerSocket.cs (server listens for client connections).
-
-- [ ] Implement ClientSocket.cs (client connects to server).
-
+- [x] Implement ServerSocket.cs (server listens for client connections).
+- [x] Implement ClientSocket.cs (client connects to server).
 - [ ] Implement MessageProtocol.cs (shared JSON serialization/deserialization).
+- [x] Test sending/receiving a basic “HELLO” message.
 
-- [ ] Test sending/receiving a basic “HELLO” message.
+    - [x] `cd cafe-mate\internet-cafe-system`
+    - [x] `dotnet new sln -n InternetCafe` Create a new solution file `./InternetCafe.sln`
+    - [x] `dotnet new winforms -n server-app` Create projects `internet-cafe-system\server-app\server-app.csproj`
+    - [x] `dotnet new winforms -n client-app` Create projects `internet-cafe-system\client-app\client-app.csproj`
+    - [x] `dotnet sln InternetCafe.sln add server-app/server-app.csproj` Add projects to the solution
+    - [x] `dotnet sln InternetCafe.sln add client-app/client-app.csproj` Add projects to the solution
+    - [x] `dotnet build InternetCafe.sln` build
+    or
+    - [ ] run thi PowerShell script [init-phase1](init-phase1.ps1)
+  
+#### Streamlined steps by gemini
+
 
 ### Step 2: Implement Session Basics
 

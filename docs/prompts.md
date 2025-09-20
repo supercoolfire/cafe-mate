@@ -5,7 +5,11 @@
 
 - [x] Do you want me to also include a sample JSON protocol specification (request/response messages between server and client) inside this Phase1.md, so you have a clear reference when coding the socket communication?
 
-- [ ] Do you want me to start writing the actual starter C# code for Step 1 (basic socket communication) so you can immediately test connecting one client to the server?
+- [x] Do you want me to start writing the actual starter C# code for Step 1 (basic socket communication) so you can immediately [ ] test connecting one client to the server?
+
+- [ ] Do you want me to also include a test guide (how to compile and run server first, then client) so you can quickly verify it’s working?
+
+- [ ] Do you want me to also include a SQLite NuGet package install step inside the script so the database setup is ready right away?
 
 - [ ] Do you also want me to define error codes and handling rules (e.g., what happens if the server denies an extension request)?
  

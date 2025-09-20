@@ -1,0 +1,16 @@
+D:\Python\experiment\cafe-mate\internet-cafe-system\server-app\bin\Debug\net9.0-windows\server-app.exe
+D:\Python\experiment\cafe-mate\internet-cafe-system\server-app\bin\Debug\net9.0-windows\server-app.dll.config
+D:\Python\experiment\cafe-mate\internet-cafe-system\server-app\bin\Debug\net9.0-windows\server-app.deps.json
+D:\Python\experiment\cafe-mate\internet-cafe-system\server-app\bin\Debug\net9.0-windows\server-app.runtimeconfig.json
+D:\Python\experiment\cafe-mate\internet-cafe-system\server-app\bin\Debug\net9.0-windows\server-app.dll
+D:\Python\experiment\cafe-mate\internet-cafe-system\server-app\bin\Debug\net9.0-windows\server-app.pdb
+D:\Python\experiment\cafe-mate\internet-cafe-system\server-app\obj\Debug\net9.0-windows\server-app.GeneratedMSBuildEditorConfig.editorconfig
+D:\Python\experiment\cafe-mate\internet-cafe-system\server-app\obj\Debug\net9.0-windows\server-app.AssemblyInfoInputs.cache
+D:\Python\experiment\cafe-mate\internet-cafe-system\server-app\obj\Debug\net9.0-windows\server-app.AssemblyInfo.cs
+D:\Python\experiment\cafe-mate\internet-cafe-system\server-app\obj\Debug\net9.0-windows\server-app.csproj.CoreCompileInputs.cache
+D:\Python\experiment\cafe-mate\internet-cafe-system\server-app\obj\Debug\net9.0-windows\server-app.sourcelink.json
+D:\Python\experiment\cafe-mate\internet-cafe-system\server-app\obj\Debug\net9.0-windows\server-app.dll
+D:\Python\experiment\cafe-mate\internet-cafe-system\server-app\obj\Debug\net9.0-windows\refint\server-app.dll
+D:\Python\experiment\cafe-mate\internet-cafe-system\server-app\obj\Debug\net9.0-windows\server-app.pdb
+D:\Python\experiment\cafe-mate\internet-cafe-system\server-app\obj\Debug\net9.0-windows\server-app.genruntimeconfig.cache
+D:\Python\experiment\cafe-mate\internet-cafe-system\server-app\obj\Debug\net9.0-windows\ref\server-app.dll
