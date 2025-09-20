@@ -1,4 +1,4 @@
-# ☕ Internet Café Management System (Cloud + Local Hybrid)
+# ☕ Internet Café Management System (Cloud + Local Hybrid) Canonical Plan
 
 A full-featured **Internet Café Management SaaS** that allows café owners to manage client computers from a central server with optional cloud-based monitoring.
 Includes **free trial**, **subscription model**, and **premium feature unlocks**.
@@ -38,17 +38,17 @@ Includes **free trial**, **subscription model**, and **premium feature unlocks**
 ## 🏗️ Architecture
 
 ```
- ┌─────────────────────────────┐
+ ┌──────────────────────────────┐
  │         Cloud Server         │
  │ (License + Payments + Admin) │
  │  • License verification      │
  │  • Subscription management   │
  │  • Remote monitoring         │
  │  • Reports / Analytics       │
- └───────────────▲─────────────┘
+ └───────────────▲──────────────┘
                  │ Internet
                  │
- ┌───────────────┴─────────────┐
+ ┌───────────────┴──────────────┐
  │     Local Café Server        │
  │ (Admin PC in the café)       │
  │  • Manages client sessions   │
@@ -70,7 +70,7 @@ Includes **free trial**, **subscription model**, and **premium feature unlocks**
 
 ## ⚙️ Development Roadmap
 
-### Phase 1: Core LAN Features
+### [Phase 1: Core LAN Features](docs/Phase1.md)
 
 * [ ] Client login with session code
 * [ ] Timer + alarm on client
