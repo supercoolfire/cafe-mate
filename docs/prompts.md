@@ -5,11 +5,16 @@
 
 - [x] Do you want me to also include a sample JSON protocol specification (request/response messages between server and client) inside this Phase1.md, so you have a clear reference when coding the socket communication?
 
-- [x] Do you want me to start writing the actual starter C# code for Step 1 (basic socket communication) so you can immediately [ ] test connecting one client to the server?
+- [x] Do you want me to start writing the actual starter C# code for Step 1 (basic socket communication) so you can immediately 
+- [x] test connecting one client to the server?
 
-- [ ] Do you want me to also include a test guide (how to compile and run server first, then client) so you can quickly verify it’s working?
+- [x] Do you want me to also include a test guide (how to compile and run server first, then client) so you can quickly verify it’s working?
 
-- [ ] Do you want me to integrate this test directly inside server-app (so you can just run the server to confirm), or keep it as a standalone quick test file?
+- [x] Do you want me to integrate this test directly inside server-app (so you can just run the server to confirm), or keep it as a standalone quick test file?
+
+- [x] If you want, I can also rewrite Program.cs in client-app to use this ClientSocket cleanly so that dotnet run --project client-app works every time without forcibly closed errors.
+
+
 
 - [ ] Do you want me to also include a SQLite NuGet package install step inside the script so the database setup is ready right away?
 

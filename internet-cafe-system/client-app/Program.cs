@@ -1,17 +1,17 @@
-// client-app\Program.cs
+// client-app/Program.cs
 using System;
-using System.Net.Sockets;
-using System.Text;
-using CafeMate.Shared;
+using CafeMate.Client.Networking; // Namespace where ClientSocket is defined
 
-namespace client_app // <-- add this so it matches
+class Program
 {
-    class Program
+    static void Main()
     {
-        static void Main()
-        {
-            var client = new ClientSocket();
-            client.Connect();
-        }
+        Console.WriteLine("[CLIENT] Starting...");
+
+        // Create and connect the client socket
+        var client = new ClientSocket();
+        client.Connect();
+
+        Console.WriteLine("[CLIENT] Finished.");
     }
 }

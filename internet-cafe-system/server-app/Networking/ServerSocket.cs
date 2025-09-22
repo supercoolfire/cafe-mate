@@ -1,34 +1,61 @@
+using System;
+using System.Net;
 using System.Net.Sockets;
+using System.IO;
 using System.Text;
-using System.Text.Json;
+using CafeMate.Shared;
 
-TcpListener listener = new TcpListener(System.Net.IPAddress.Any, 5000);
-listener.Start();
-Console.WriteLine("[Server] Listening on port 5000...");
-
-while (true)
+namespace CafeMate.Server.Networking
 {
-    TcpClient client = listener.AcceptTcpClient();
-    Console.WriteLine("[Server] Client connected!");
-
-    _ = Task.Run(() =>
+    public class ServerSocket
     {
-        using NetworkStream stream = client.GetStream();
+        private TcpListener? _server;
 
-        // Send greeting
-        var greeting = new { Type = "ServerGreeting", Content = "Hello from server!" };
-        string json = JsonSerializer.Serialize(greeting);
-        byte[] buffer = Encoding.UTF8.GetBytes(json + "\n");
-        stream.Write(buffer, 0, buffer.Length);
-        Console.WriteLine("[Server] Sent: " + json);
-
-        // 🔑 Keep listening for client messages
-        using var reader = new StreamReader(stream, Encoding.UTF8);
-        while (true)
+        public void Start(int port = 5000)
         {
-            string? line = reader.ReadLine();
-            if (line == null) break; // client disconnected
-            Console.WriteLine("[Server] Received: " + line);
+            _server = new TcpListener(IPAddress.Any, port);
+            _server.Start();
+            Console.WriteLine($"[SERVER] Listening on port {port}...");
+
+            while (true)
+            {
+                try
+                {
+                    using TcpClient client = _server.AcceptTcpClient();
+                    using NetworkStream stream = client.GetStream();
+                    using StreamReader reader = new StreamReader(stream, Encoding.UTF8);
+                    using StreamWriter writer = new StreamWriter(stream, Encoding.UTF8) { AutoFlush = true };
+
+                    Console.WriteLine("[SERVER] Client connected!");
+
+                    // Read client message
+                    string? msgJson = reader.ReadLine();
+                    if (string.IsNullOrEmpty(msgJson))
+                        continue;
+
+                    var receivedMessage = MessageProtocol.Deserialize<Message>(msgJson);
+                    Console.WriteLine($"[CLIENT MSG] Type={receivedMessage.Type}, Content={receivedMessage.Content}");
+
+                    // Send server greeting
+                    var response = new Message
+                    {
+                        Type = "ServerGreeting",
+                        Content = "Hello from server!"
+                    };
+                    writer.WriteLine(MessageProtocol.Serialize(response));
+                    Console.WriteLine($"[SERVER] Sent: {MessageProtocol.Serialize(response)}");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"[SERVER] Error: {ex.Message}");
+                }
+            }
         }
-    });
+
+        public void Stop()
+        {
+            _server?.Stop();
+            Console.WriteLine("[SERVER] Stopped.");
+        }
+    }
 }

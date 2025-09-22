@@ -81,5 +81,36 @@ namespace ServerApp.Tests
             // Assert
             Assert.Equal("null", json); // System.Text.Json serializes null as "null"
         }
+        [Fact]
+        public void StartSession_Serialization_RoundTrip_Works()
+        {
+            var startMsg = new Message
+            {
+                Type = "START_SESSION",
+                Content = ""
+            };
+
+            string json = MessageProtocol.Serialize(startMsg);
+            var copy = MessageProtocol.Deserialize<Message>(json);
+
+            Assert.Equal("START_SESSION", copy.Type);
+            Assert.Equal("", copy.Content);
+        }
+
+        [Fact]
+        public void SessionStarted_Serialization_RoundTrip_Works()
+        {
+            var sessionMsg = new Message
+            {
+                Type = "SESSION_STARTED",
+                Content = "Session has begun."
+            };
+
+            string json = MessageProtocol.Serialize(sessionMsg);
+            var copy = MessageProtocol.Deserialize<Message>(json);
+
+            Assert.Equal("SESSION_STARTED", copy.Type);
+            Assert.Equal("Session has begun.", copy.Content);
+        }
     }
 }

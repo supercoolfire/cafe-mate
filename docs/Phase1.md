@@ -376,7 +376,7 @@ After running the script, you will have the **canonical folder structure** with 
     - [x] `dotnet sln InternetCafe.sln add client-app/client-app.csproj` Add projects to the solution
     - [x] `dotnet build InternetCafe.sln` build  
     or
-    - [ ] run thi PowerShell script [init-phase1](init-phase1.ps1)
+    - [ ] run this PowerShell script [init-phase1](init-phase1.ps1)
   
 
 ```shell
@@ -398,10 +398,29 @@ dotnet run
     ```
 
 ### Step 2: Implement Session Basics
-- [ ] Server can accept a START_SESSION command.
-- [ ] Server responds with SESSION_STARTED.
-- [ ] Client shows a countdown timer (TimerForm.cs).
+- **Server-side**  
+  - [X] Test project must reference the server project
+    - [X] `dotnet add server-app.Tests/server-app.Tests.csproj reference server-app/server-app.csproj`
+    - [X] dotnet test
+  - [ ] Extend Message.Type enum (or string values) to include:  
+    - [ ] "`START_SESSION`"  
+    - [ ] "`SESSION_STARTED`"  
+  - [ ] Update ServerSocket to handle "`START_SESSION`":  
+    - [ ] When received from client, log it (`[Server] Received: START_SESSION`). 
+    - [ ] Respond with a Message `{ Type = "SESSION_STARTED", Content = "Session has begun." }`.  
+- **Client-side**  
+  - [ ] Update `ClientSocket` to send a `START_SESSION` command after connecting (for now you can trigger it automatically, later via a button).  
+  - [ ] Handle "`SESSION_STARTED`" response:  
+    - [ ] Open `TimerForm.cs` (WinForms form).  
+    - [ ] Start a countdown timer (for testing, maybe 10 seconds).  
+    - [ ] Display the remaining time in a label.  
+- **UI (TimerForm.cs)**
+  - [ ] Add a `Label` (for time left).  
+  - [ ] Add a `Timer` component (`System.Windows.Forms.Timer`).  
+  - [ ] On `Tick`, decrease remaining time and update the label.  
+  - [ ] When timer reaches 0, show a messagebox ("`Session ended`") and stop timer. 
+
 
 ### Step 3: Add Chat (extension request)
-- [ ] Client sends CHAT_MESSAGE → “Please extend my session.”
-- [ ] Server can reply via CHAT_MESSAGE.
+- [ ] Client sends `CHAT_MESSAGE` → “Please extend my session.”
+- [ ] Server can reply via `CHAT_MESSAGE`.
