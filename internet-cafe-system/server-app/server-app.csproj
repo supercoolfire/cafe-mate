@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <Compile Remove="Form1.cs" />
+    <Compile Remove="TestMessageProtocol.cs" />
     <Compile Include="..\Shared\MessageProtocol.cs" Link="MessageProtocol.cs" />
   </ItemGroup>
 </Project>

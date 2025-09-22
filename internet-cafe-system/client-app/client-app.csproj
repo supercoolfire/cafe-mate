@@ -8,8 +8,6 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
     <StartupObject>client_app.Program</StartupObject>
-	<UseWindowsForms>true</UseWindowsForms>
-	<ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
   <ItemGroup>

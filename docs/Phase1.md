@@ -328,10 +328,33 @@ After running the script, you will have the **canonical folder structure** with 
 ## make a minimal working prototype:
 
 ### Step 1: Establish Socket Communication
+- [x] Implement `ServerSocket.cs` (server listens for client connections).
+- [x] Implement `ClientSocket.cs` (client connects to server).
+- [x] Implement `server-app.Tests/MessageProtocolTests.cs` (shared JSON serialization/deserialization).
+  - [x] converting TestMessageProtocol.cs into a unit test style file
+    ```shell
+    dotnet new xunit -n server-app.Tests
+    dotnet sln add server-app.Tests/server-app.Tests.csproj
+    dotnet add server-app.Tests/server-app.Tests.csproj reference server-app/server-app.csproj
+    ```
+  - [x] refactor existing TestMessageProtocol.cs into this test format directly using `public class MessageProtocolTests` isntead of `main()`
+  - [x] migrate the rest of TestMessageProtocol.cs into proper unit tests
+      ```csharp
+      // ✅ New style (xUnit unit test in MessageProtocolTests.cs)
+      [Fact]
+      public void SerializeAndDeserialize_RoundTrip_Works()
+      {
+          var msg = new Message { Type = "HELLO", Content = "World" };
+          string json = MessageProtocol.Serialize(msg);
+          var copy = MessageProtocol.Deserialize<Message>(json);
 
-- [x] Implement ServerSocket.cs (server listens for client connections).
-- [x] Implement ClientSocket.cs (client connects to server).
-- [ ] Implement MessageProtocol.cs (shared JSON serialization/deserialization).
+          Assert.Equal("HELLO", copy.Type);
+          Assert.Equal("World", copy.Content);
+      }
+      ```
+  - [x] `dotnet test`
+  - [x] `dotnet run --project server-app` 
+  - [ ] `dotnet run --project client-app` (with error)
 - [x] Test sending/receiving a basic “HELLO” message.
 
     - [x] `cd cafe-mate\internet-cafe-system`
@@ -345,16 +368,29 @@ After running the script, you will have the **canonical folder structure** with 
     - [ ] run thi PowerShell script [init-phase1](init-phase1.ps1)
   
 
+```shell
+dotnet clean
+dotnet build
+dotnet run
+```
+#### Troubleshooting error CS0017:
+    ```shell
+    Select-String -Path .\* -Pattern "static void Main" # search all files for static void Main
+    ```
+    instead of deleting, Keep It, but Exclude from Compilation
+    Edit `server-app.csproj` and add:
+
+    ```xml
+    <ItemGroup>
+      <Compile Remove="TestMessageProtocol.cs" />
+    </ItemGroup>
+    ```
+
 ### Step 2: Implement Session Basics
-
 - [ ] Server can accept a START_SESSION command.
-
 - [ ] Server responds with SESSION_STARTED.
-
 - [ ] Client shows a countdown timer (TimerForm.cs).
 
 ### Step 3: Add Chat (extension request)
-
 - [ ] Client sends CHAT_MESSAGE → “Please extend my session.”
-
 - [ ] Server can reply via CHAT_MESSAGE.

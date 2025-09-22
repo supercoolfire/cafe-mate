@@ -9,6 +9,8 @@
 
 - [ ] Do you want me to also include a test guide (how to compile and run server first, then client) so you can quickly verify it’s working?
 
+- [ ] Do you want me to integrate this test directly inside server-app (so you can just run the server to confirm), or keep it as a standalone quick test file?
+
 - [ ] Do you want me to also include a SQLite NuGet package install step inside the script so the database setup is ready right away?
 
 - [ ] Do you also want me to define error codes and handling rules (e.g., what happens if the server denies an extension request)?
