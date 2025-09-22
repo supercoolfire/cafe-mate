@@ -337,6 +337,12 @@ After running the script, you will have the **canonical folder structure** with 
     dotnet sln add server-app.Tests/server-app.Tests.csproj
     dotnet add server-app.Tests/server-app.Tests.csproj reference server-app/server-app.csproj
     ```
+    - [ ] `server-app` and `client-app` inside `.csproj`
+      ```xml
+      <ItemGroup>
+        <ProjectReference Include="..\CafeMate.Shared\CafeMate.Shared.csproj" />
+      </ItemGroup>
+      ```
   - [x] refactor existing TestMessageProtocol.cs into this test format directly using `public class MessageProtocolTests` isntead of `main()`
   - [x] migrate the rest of TestMessageProtocol.cs into proper unit tests
       ```csharp
@@ -354,7 +360,12 @@ After running the script, you will have the **canonical folder structure** with 
       ```
   - [x] `dotnet test`
   - [x] `dotnet run --project server-app` 
-  - [ ] `dotnet run --project client-app` (with error)
+    - [x] Server starts, listens, and stays open.
+    - [x] Server receives and prints the client’s hello.
+  - [x] `dotnet run --project client-app` (with error)
+    - [x] Client connects successfully.
+    - [x] Client receives greeting message.
+    - [x] Client sends back its own hello.
 - [x] Test sending/receiving a basic “HELLO” message.
 
     - [x] `cd cafe-mate\internet-cafe-system`
