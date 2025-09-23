@@ -1,5 +1,0 @@
-D:\Python\experiment\cafe-mate\internet-cafe-system\client-app\obj\Debug\net9.0-windows\client-app.GeneratedMSBuildEditorConfig.editorconfig
-D:\Python\experiment\cafe-mate\internet-cafe-system\client-app\obj\Debug\net9.0-windows\client-app.AssemblyInfoInputs.cache
-D:\Python\experiment\cafe-mate\internet-cafe-system\client-app\obj\Debug\net9.0-windows\client-app.AssemblyInfo.cs
-D:\Python\experiment\cafe-mate\internet-cafe-system\client-app\obj\Debug\net9.0-windows\client-app.csproj.CoreCompileInputs.cache
-D:\Python\experiment\cafe-mate\internet-cafe-system\client-app\obj\Debug\net9.0-windows\client-app.sourcelink.json
