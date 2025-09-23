@@ -1,0 +1,91 @@
+# =========================
+
+# .NET / Visual Studio
+
+# =========================
+
+.vs/
+\*.user
+\*.suo
+\*.cache
+\*.dbmdl
+\*.bak
+\*.log
+\*.ldf
+\*.mdf
+
+# Build results
+
+bin/
+obj/
+\[Bb]uild/
+\[Ll]ogs/
+\[Ll]og/
+
+# Test results
+
+TestResults/
+\*.trx
+
+# NuGet
+
+\*.nupkg
+\*.snupkg
+packages/
+.nuget/
+
+# Debug / Release
+
+\*.pdb
+\*.mdb
+
+# Compiled binaries
+
+\*.dll
+\*.exe
+
+# Publish output
+
+publish/
+out/
+
+# =========================
+
+# OS-specific
+
+# =========================
+
+# Windows
+
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+\$RECYCLE.BIN/
+
+# Mac
+
+.DS\_Store
+
+# Linux
+
+\*\~
+
+# =========================
+
+# Optional: Keep if you might add Python scripts
+
+# =========================
+
+\*.pyc
+**pycache**/
+venv/
+.venv/
+
+# =========================
+
+# Secrets
+
+# =========================
+
+secrets.ini
+\*.tmp
