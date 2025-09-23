@@ -337,12 +337,12 @@ After running the script, you will have the **canonical folder structure** with 
     dotnet sln add server-app.Tests/server-app.Tests.csproj
     dotnet add server-app.Tests/server-app.Tests.csproj reference server-app/server-app.csproj
     ```
-    - [ ] `server-app` and `client-app` inside `.csproj`
-      ```xml
-      <ItemGroup>
-        <ProjectReference Include="..\CafeMate.Shared\CafeMate.Shared.csproj" />
-      </ItemGroup>
-      ```
+  - [x] `server-app` and `client-app` inside `.csproj`
+    ```xml
+    <ItemGroup>
+      <ProjectReference Include="..\CafeMate.Shared\CafeMate.Shared.csproj" />
+    </ItemGroup>
+    ```
   - [x] refactor existing TestMessageProtocol.cs into this test format directly using `public class MessageProtocolTests` isntead of `main()`
   - [x] migrate the rest of TestMessageProtocol.cs into proper unit tests
       ```csharp
@@ -398,23 +398,31 @@ dotnet run
     ```
 
 ### Step 2: Implement Session Basics
-- **Server-side**  
+- ***Project Setup & Testing***
   - [X] Test project must reference the server project
     - [X] `dotnet add server-app.Tests/server-app.Tests.csproj reference server-app/server-app.csproj`
     - [X] dotnet test
-  - [ ] Extend Message.Type enum (or string values) to include:  
-    - [ ] "`START_SESSION`"  
-    - [ ] "`SESSION_STARTED`"  
+    - [x] dotnet build
+  - [ ] `dotnet run --project server-app` (closing when client is connected)
+  - [ ] `dotnet run --project client-app` (Unable to read data)
+- ***Message Protocol Updates***
+  - **Server-side**  
+    - [ ] Extend Message.Type enum (or string values) to include:  
+      - [ ] "`START_SESSION`"  
+      - [ ] "`SESSION_STARTED`"  
+- ***Server-Side Logic***
+  - **Server-side** 
   - [ ] Update ServerSocket to handle "`START_SESSION`":  
-    - [ ] When received from client, log it (`[Server] Received: START_SESSION`). 
-    - [ ] Respond with a Message `{ Type = "SESSION_STARTED", Content = "Session has begun." }`.  
-- **Client-side**  
-  - [ ] Update `ClientSocket` to send a `START_SESSION` command after connecting (for now you can trigger it automatically, later via a button).  
-  - [ ] Handle "`SESSION_STARTED`" response:  
-    - [ ] Open `TimerForm.cs` (WinForms form).  
-    - [ ] Start a countdown timer (for testing, maybe 10 seconds).  
-    - [ ] Display the remaining time in a label.  
-- **UI (TimerForm.cs)**
+      - [ ] When received from client, log it (`[Server] Received: START_SESSION`). 
+      - [ ] Respond with a Message `{ Type = "SESSION_STARTED", Content = "Session has begun." }`.  
+- ***Client-Side Logic***
+  - **Client-side**  
+    - [ ] Update `ClientSocket` to send a `START_SESSION` command after connecting (for now you can trigger it automatically, later via a button).  
+    - [ ] Handle "`SESSION_STARTED`" response:  
+      - [ ] Open `TimerForm.cs` (WinForms form).  
+      - [ ] Start a countdown timer (for testing, maybe 10 seconds).  
+      - [ ] Display the remaining time in a label.  
+- ***UI Implementation (TimerForm.cs)***
   - [ ] Add a `Label` (for time left).  
   - [ ] Add a `Timer` component (`System.Windows.Forms.Timer`).  
   - [ ] On `Tick`, decrease remaining time and update the label.  

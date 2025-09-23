@@ -1,5 +1,6 @@
 using System;
 using System.Windows.Forms;
+using CafeMate.Client.Networking;
 
 namespace client_app.Forms;
 

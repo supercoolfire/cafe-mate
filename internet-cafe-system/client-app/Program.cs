@@ -2,16 +2,20 @@
 using System;
 using CafeMate.Client.Networking; // Namespace where ClientSocket is defined
 
-class Program
+namespace client_app
 {
-    static void Main()
+    class Program
     {
-        Console.WriteLine("[CLIENT] Starting...");
+        [STAThread]
+        static void Main()
+        {
+            Console.WriteLine("[CLIENT] Starting...");
 
-        // Create and connect the client socket
-        var client = new ClientSocket();
-        client.Connect();
+            // Create and connect the client socket
+            ClientSocket client = new ClientSocket();
+            client.Connect();
 
-        Console.WriteLine("[CLIENT] Finished.");
+            Console.WriteLine("[CLIENT] Finished.");
+        }
     }
 }
